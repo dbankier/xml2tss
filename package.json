@@ -1,8 +1,8 @@
 {
   "name": "xml2tss",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Alloy View XML to tss generator",
-  "main": "index.js",
+  "main": "xml2tss.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

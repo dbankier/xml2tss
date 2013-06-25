@@ -28,11 +28,11 @@ function parse(o) {
   return buffer;
 }
     
-exports.convert=function(string) {
+exports.convertString=function(string, callback) {
   var parser = new xml2js.Parser();
   parser.parseString(string, function(err,data) {
     var raw = parse(data);
-    console.log(raw
+    callback(err, raw
        .filter(function(elem, pos) {
           return raw.indexOf(elem) === pos;
        })
@@ -44,8 +44,8 @@ exports.convert=function(string) {
   });
 };
 
-exports.convertFile=function(file) {
+exports.convertFile=function(file,callback) {
   fs.readFile(file, function(err, data) {
-    exports.convert(data);
+    exports.convertString(data,callback);
   });
 }

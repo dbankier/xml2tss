@@ -8,7 +8,7 @@ Build an empty tss file from an Alloy view xml file
 sudo npm install -g xml2tss
 ```
 
-# Usage
+# CLI Usage
 
 ```
 xml2tss [filename]
@@ -27,6 +27,23 @@ xml2tss row.xml > ../styles/row.tss
 
 ```
 xml2tss row.xml | pbcopy
+```
+# Library Usage
+
+The `convertString` and `convertFile` functions are available:
+
+e.g.
+
+```
+var xml2tss = require("xml2tss");
+
+xml2tss.convertString('<Alloy><Win id="win"/></Alloy>',function(err,data) {
+  console.log(data);
+});
+
+xml2tss.convertFile('row.xml',function(err,data) {
+  console.log(data);
+});
 ```
 
 # Output

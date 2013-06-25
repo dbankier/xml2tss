@@ -5,5 +5,7 @@ var xml2tss = require("../xml2tss");
 if (process.argv.length !== 3) {
   console.log("USAGE: xml2tss [view.xml]");
 } else {
-  xml2tss.convertFile(process.argv[2]);
+  xml2tss.convertFile(process.argv[2] ,function(err,data) {
+    console.log(data);
+  });
 }
