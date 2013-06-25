@@ -1,0 +1,23 @@
+{
+  "name": "xml2tss",
+  "version": "0.0.1",
+  "description": "Alloy View XML to tss generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "alloy",
+    "titanium",
+    "appcelerator",
+    "xml",
+    "tss"
+  ],
+  "bin":"bin/xml2tss",
+  "author": "David Bankier",
+  "license": "MIT",
+  "dependencies": {
+    "xml2js": "~0.2.8"
+  }
+}
