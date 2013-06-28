@@ -4,17 +4,19 @@ var fs = require('fs'),
 function parse(o) {
   var buffer = [];
   function process(internal_object) {
-    for(key in internal_object) {
-      value = internal_object[key];
-      if (key ==="$") {
-        if (value.id) {
-          buffer.push("#" + value.id);
+    if(typeof internal_object !== 'string' && !(internal_object instanceof String)){
+      for(key in internal_object) {
+        value = internal_object[key];
+        if (key ==="$") {
+          if (value.id) {
+            buffer.push("#" + value.id);
+          }
+          if (value.class) {
+            buffer = buffer.concat(value.class.split(" ").map(function(o) { return "." + o;}));
+          }
+        } else if (key !== "_") {
+          buffer = buffer.concat(parse(value));
         }
-        if (value.class) {
-          buffer = buffer.concat(value.class.split(" ").map(function(o) { return "." + o;}));
-        }
-      } else if (key !== "_") {
-        buffer = buffer.concat(parse(value));
       }
     }
   }
