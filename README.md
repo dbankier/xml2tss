@@ -2,35 +2,55 @@
 
 Build an empty tss file from an Alloy view xml file
 
-# Install
+## Install
 
 ```
 sudo npm install -g xml2tss
 ```
 
-# CLI Usage
+## CLI Usage
 
 ```
-xml2tss [filename]
+xml2tss [filename.xml]
 ``` 
 
-converted filed is returned to stdout (so you can build your own editor
+converted file is returned to stdout (so you can build your own editor
 plugin)
 
-## to output to a file
+**NEW**
+
+```
+xml2tss [filename.xml] (filename.tss)
+```
+
+if a target tss file is supplied it will write the output to the target
+tss file. If the file already exists it will _update_ the file appending
+to the end the missing ids and/or classes.
+
+
+### to output to a file
 
 ```
 xml2tss row.xml > ../styles/row.tss
 ```
 
-## to clipboard (OS X)
+or **new**
+
+```
+xml2tss row.xml ../styles/row.tss
+```
+
+the second command will create or update the target file with the missing tags
+
+
+### to clipboard (OS X)
 
 ```
 xml2tss row.xml | pbcopy
 ```
-# Library Usage
+## Library Usage
 
-The `convertString` and `convertFile` functions are available:
+The `convertString`, `convertFile` and `updateFile` functions are available:
 
 e.g.
 
@@ -42,6 +62,11 @@ xml2tss.convertString('<Alloy><Win id="win"/></Alloy>',function(err,data) {
 });
 
 xml2tss.convertFile('row.xml',function(err,data) {
+  console.log(data);
+});
+
+// will create or update the target row.tss
+xml2tss.updateFile('row.xml','row.tss', function(err,data) {
   console.log(data);
 });
 ```
