@@ -2,7 +2,8 @@ var fs = require('fs'),
     path = require('path'),
     xml2js = require('xml2js'),
     parser = new xml2js.Parser();
- 
+
+// older nodes
 function parseXML(o) {
   var buffer = [];
   function process(internal_object) {
@@ -68,7 +69,7 @@ exports.convertFile=function(file,callback) {
 
 exports.updateFile=function(source, target, callback) {
   var existing =[], content = "";
-  if (path.existsSync(target)) {
+  if (fs.existsSync(target)) {
     content = fs.readFileSync(target);
     existing = parseTSS(content);
   }
