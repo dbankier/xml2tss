@@ -14,7 +14,7 @@
     "xml",
     "tss"
   ],
-  "bin":"bin/xml2tss",
+  "bin":"./bin/xml2tss",
   "author": "David Bankier",
   "license": "MIT",
   "dependencies": {
