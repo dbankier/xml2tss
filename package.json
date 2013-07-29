@@ -1,6 +1,6 @@
 {
   "name": "xml2tss",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Alloy View XML to tss generator",
   "main": "xml2tss.js",
   "scripts": {
