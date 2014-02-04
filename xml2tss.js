@@ -60,6 +60,18 @@ exports.convertString=function(string, callback) {
     callback(err, parseXMLAndFormat(data));
   });
 };
+exports.convertArray=function(string, callback) {
+  var parser = new xml2js.Parser();
+  parser.parseString(string, function(err,data) {
+    var raw = parse(data);
+    callback(err, raw
+       .filter(function(elem, pos) {
+          return raw.indexOf(elem) === pos;
+       })
+       .sort()
+    );
+  });
+};
 
 exports.convertFile=function(file,callback) {
   fs.readFile(file, function(err, data) {
